@@ -1,0 +1,371 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "NinjaAPI", "version": "1.0.0", "description": "" },
+  "paths": {
+    "/api/core/health": {
+      "get": {
+        "operationId": "kitchenai_core_api_default",
+        "summary": "Default",
+        "parameters": [],
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/core/file": {
+      "post": {
+        "operationId": "kitchenai_core_api_file_upload",
+        "summary": "File Upload",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/FileObjectResponse" }
+              }
+            }
+          }
+        },
+        "description": "main entry for any file upload. Will upload via django storage and emit signals to any listeners",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "properties": {
+                  "file": {
+                    "format": "binary",
+                    "title": "File",
+                    "type": "string"
+                  },
+                  "data": { "$ref": "#/components/schemas/FileObjectSchema" }
+                },
+                "required": ["file", "data"],
+                "title": "MultiPartBodyParams",
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        }
+      },
+      "get": {
+        "operationId": "kitchenai_core_api_files_get",
+        "summary": "Files Get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/FileObjectResponse"
+                  },
+                  "title": "Response",
+                  "type": "array"
+                }
+              }
+            }
+          }
+        },
+        "description": "get all files"
+      }
+    },
+    "/api/core/file/{pk}": {
+      "get": {
+        "operationId": "kitchenai_core_api_file_get",
+        "summary": "File Get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "pk",
+            "schema": { "title": "Pk", "type": "integer" },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/FileObjectResponse" }
+              }
+            }
+          }
+        },
+        "description": "get a file"
+      },
+      "delete": {
+        "operationId": "kitchenai_core_api_file_delete",
+        "summary": "File Delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "pk",
+            "schema": { "title": "Pk", "type": "integer" },
+            "required": true
+          }
+        ],
+        "responses": { "200": { "description": "OK" } },
+        "description": "delete a file"
+      }
+    },
+    "/api/core/embed": {
+      "post": {
+        "operationId": "kitchenai_core_api_embed_create",
+        "summary": "Embed Create",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/EmbedObjectResponse" }
+              }
+            }
+          }
+        },
+        "description": "Create a new embed from text",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/EmbedSchema" }
+            }
+          },
+          "required": true
+        }
+      },
+      "get": {
+        "operationId": "kitchenai_core_api_embeds_get",
+        "summary": "Embeds Get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/EmbedObjectResponse"
+                  },
+                  "title": "Response",
+                  "type": "array"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get all embeds"
+      }
+    },
+    "/api/core/embed/{pk}": {
+      "get": {
+        "operationId": "kitchenai_core_api_embed_get",
+        "summary": "Embed Get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "pk",
+            "schema": { "title": "Pk", "type": "integer" },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/EmbedObjectResponse" }
+              }
+            }
+          }
+        },
+        "description": "Get an embed"
+      },
+      "delete": {
+        "operationId": "kitchenai_core_api_embed_delete",
+        "summary": "Embed Delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "pk",
+            "schema": { "title": "Pk", "type": "integer" },
+            "required": true
+          }
+        ],
+        "responses": { "200": { "description": "OK" } },
+        "description": "Delete an embed"
+      }
+    },
+    "/api/core/module/upload": {
+      "post": {
+        "operationId": "kitchenai_core_api_upload_notebook",
+        "summary": "Upload Notebook",
+        "parameters": [],
+        "responses": { "200": { "description": "OK" } },
+        "description": "WIP and NOT SAFE TO USE",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UploadModuleInput" }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/api/default/query/{label}": {
+      "post": {
+        "operationId": "kitchenai_contrib_kitchenai_sdk_kitchenai_query_handler",
+        "summary": "Query Handler",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "label",
+            "schema": { "title": "Label", "type": "string" },
+            "required": true
+          }
+        ],
+        "responses": { "200": { "description": "OK" } },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/QuerySchema" }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/api/default/agent/{label}": {
+      "post": {
+        "operationId": "kitchenai_contrib_kitchenai_sdk_kitchenai_agent_handler",
+        "summary": "Agent Handler",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "label",
+            "schema": { "title": "Label", "type": "string" },
+            "required": true
+          }
+        ],
+        "responses": { "200": { "description": "OK" } },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/QuerySchema" }
+            }
+          },
+          "required": true
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "FileObjectResponse": {
+        "properties": {
+          "id": { "title": "Id", "type": "integer" },
+          "name": { "title": "Name", "type": "string" },
+          "ingest_label": { "title": "Ingest Label", "type": "string" },
+          "metadata": {
+            "additionalProperties": { "type": "string" },
+            "title": "Metadata",
+            "type": "object"
+          },
+          "status": { "title": "Status", "type": "string" }
+        },
+        "required": ["id", "name", "ingest_label", "metadata", "status"],
+        "title": "FileObjectResponse",
+        "type": "object"
+      },
+      "FileObjectSchema": {
+        "properties": {
+          "name": { "title": "Name", "type": "string" },
+          "ingest_label": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Ingest Label"
+          },
+          "metadata": {
+            "anyOf": [
+              {
+                "additionalProperties": { "type": "string" },
+                "type": "object"
+              },
+              { "type": "null" }
+            ],
+            "title": "Metadata"
+          }
+        },
+        "required": ["name"],
+        "title": "FileObjectSchema",
+        "type": "object"
+      },
+      "EmbedObjectResponse": {
+        "properties": {
+          "id": { "title": "Id", "type": "integer" },
+          "text": { "title": "Text", "type": "string" },
+          "ingest_label": { "title": "Ingest Label", "type": "string" },
+          "metadata": {
+            "additionalProperties": { "type": "string" },
+            "title": "Metadata",
+            "type": "object"
+          },
+          "status": { "title": "Status", "type": "string" }
+        },
+        "required": ["id", "text", "ingest_label", "metadata", "status"],
+        "title": "EmbedObjectResponse",
+        "type": "object"
+      },
+      "EmbedSchema": {
+        "properties": {
+          "text": { "title": "Text", "type": "string" },
+          "ingest_label": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Ingest Label"
+          },
+          "metadata": {
+            "anyOf": [
+              {
+                "additionalProperties": { "type": "string" },
+                "type": "object"
+              },
+              { "type": "null" }
+            ],
+            "title": "Metadata"
+          }
+        },
+        "required": ["text"],
+        "title": "EmbedSchema",
+        "type": "object"
+      },
+      "UploadModuleInput": {
+        "properties": {
+          "module": { "title": "Module", "type": "string" },
+          "project_path": { "title": "Project Path", "type": "string" }
+        },
+        "required": ["module", "project_path"],
+        "title": "UploadModuleInput",
+        "type": "object"
+      },
+      "QuerySchema": {
+        "properties": {
+          "query": { "title": "Query", "type": "string" },
+          "metadata": {
+            "anyOf": [
+              {
+                "additionalProperties": { "type": "string" },
+                "type": "object"
+              },
+              { "type": "null" }
+            ],
+            "title": "Metadata"
+          }
+        },
+        "required": ["query"],
+        "title": "QuerySchema",
+        "type": "object"
+      }
+    }
+  },
+  "servers": []
+}
