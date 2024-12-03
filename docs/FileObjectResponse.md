@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.file_object_response import FileObjectResponse
+from kitchenai_python_sdk.models.file_object_response import FileObjectResponse
 
 # TODO update the JSON string below
 json = "{}"

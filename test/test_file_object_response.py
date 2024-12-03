@@ -14,7 +14,7 @@
 
 import unittest
 
-from openapi_client.models.file_object_response import FileObjectResponse
+from kitchenai_python_sdk.models.file_object_response import FileObjectResponse
 
 class TestFileObjectResponse(unittest.TestCase):
     """FileObjectResponse unit test stubs"""

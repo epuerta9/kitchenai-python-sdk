@@ -14,7 +14,7 @@
 
 import unittest
 
-from openapi_client.models.embed_object_response import EmbedObjectResponse
+from kitchenai_python_sdk.models.embed_object_response import EmbedObjectResponse
 
 class TestEmbedObjectResponse(unittest.TestCase):
     """EmbedObjectResponse unit test stubs"""

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.query_schema import QuerySchema
+from kitchenai_python_sdk.models.query_schema import QuerySchema
 
 # TODO update the JSON string below
 json = "{}"

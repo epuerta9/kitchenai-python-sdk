@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.upload_module_input import UploadModuleInput
+from kitchenai_python_sdk.models.upload_module_input import UploadModuleInput
 
 # TODO update the JSON string below
 json = "{}"

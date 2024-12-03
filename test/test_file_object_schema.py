@@ -14,7 +14,7 @@
 
 import unittest
 
-from openapi_client.models.file_object_schema import FileObjectSchema
+from kitchenai_python_sdk.models.file_object_schema import FileObjectSchema
 
 class TestFileObjectSchema(unittest.TestCase):
     """FileObjectSchema unit test stubs"""

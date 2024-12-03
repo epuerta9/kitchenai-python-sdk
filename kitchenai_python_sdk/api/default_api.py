@@ -18,16 +18,16 @@ from typing_extensions import Annotated
 
 from pydantic import StrictBytes, StrictInt, StrictStr
 from typing import List, Tuple, Union
-from openapi_client.models.embed_object_response import EmbedObjectResponse
-from openapi_client.models.embed_schema import EmbedSchema
-from openapi_client.models.file_object_response import FileObjectResponse
-from openapi_client.models.file_object_schema import FileObjectSchema
-from openapi_client.models.query_schema import QuerySchema
-from openapi_client.models.upload_module_input import UploadModuleInput
+from kitchenai_python_sdk.models.embed_object_response import EmbedObjectResponse
+from kitchenai_python_sdk.models.embed_schema import EmbedSchema
+from kitchenai_python_sdk.models.file_object_response import FileObjectResponse
+from kitchenai_python_sdk.models.file_object_schema import FileObjectSchema
+from kitchenai_python_sdk.models.query_schema import QuerySchema
+from kitchenai_python_sdk.models.upload_module_input import UploadModuleInput
 
-from openapi_client.api_client import ApiClient, RequestSerialized
-from openapi_client.api_response import ApiResponse
-from openapi_client.rest import RESTResponseType
+from kitchenai_python_sdk.api_client import ApiClient, RequestSerialized
+from kitchenai_python_sdk.api_response import ApiResponse
+from kitchenai_python_sdk.rest import RESTResponseType
 
 
 class DefaultApi:

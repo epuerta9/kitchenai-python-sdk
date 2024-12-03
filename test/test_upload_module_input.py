@@ -14,7 +14,7 @@
 
 import unittest
 
-from openapi_client.models.upload_module_input import UploadModuleInput
+from kitchenai_python_sdk.models.upload_module_input import UploadModuleInput
 
 class TestUploadModuleInput(unittest.TestCase):
     """UploadModuleInput unit test stubs"""

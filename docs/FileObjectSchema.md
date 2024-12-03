@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.file_object_schema import FileObjectSchema
+from kitchenai_python_sdk.models.file_object_schema import FileObjectSchema
 
 # TODO update the JSON string below
 json = "{}"

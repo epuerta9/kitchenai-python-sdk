@@ -14,7 +14,7 @@
 
 import unittest
 
-from openapi_client.models.query_schema import QuerySchema
+from kitchenai_python_sdk.models.query_schema import QuerySchema
 
 class TestQuerySchema(unittest.TestCase):
     """QuerySchema unit test stubs"""

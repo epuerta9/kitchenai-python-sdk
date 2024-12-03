@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.embed_object_response import EmbedObjectResponse
+from kitchenai_python_sdk.models.embed_object_response import EmbedObjectResponse
 
 # TODO update the JSON string below
 json = "{}"

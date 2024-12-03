@@ -14,7 +14,7 @@
 
 import unittest
 
-from openapi_client.models.embed_schema import EmbedSchema
+from kitchenai_python_sdk.models.embed_schema import EmbedSchema
 
 class TestEmbedSchema(unittest.TestCase):
     """EmbedSchema unit test stubs"""

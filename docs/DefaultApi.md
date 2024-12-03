@@ -1,4 +1,4 @@
-# openapi_client.DefaultApi
+# kitchenai_python_sdk.DefaultApi
 
 All URIs are relative to *http://localhost*
 
@@ -27,24 +27,24 @@ Agent Handler
 
 
 ```python
-import openapi_client
-from openapi_client.models.query_schema import QuerySchema
-from openapi_client.rest import ApiException
+import kitchenai_python_sdk
+from kitchenai_python_sdk.models.query_schema import QuerySchema
+from kitchenai_python_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = kitchenai_python_sdk.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with kitchenai_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.DefaultApi(api_client)
+    api_instance = kitchenai_python_sdk.DefaultApi(api_client)
     label = 'label_example' # str | 
-    query_schema = openapi_client.QuerySchema() # QuerySchema | 
+    query_schema = kitchenai_python_sdk.QuerySchema() # QuerySchema | 
 
     try:
         # Agent Handler
@@ -93,24 +93,24 @@ Query Handler
 
 
 ```python
-import openapi_client
-from openapi_client.models.query_schema import QuerySchema
-from openapi_client.rest import ApiException
+import kitchenai_python_sdk
+from kitchenai_python_sdk.models.query_schema import QuerySchema
+from kitchenai_python_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = kitchenai_python_sdk.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with kitchenai_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.DefaultApi(api_client)
+    api_instance = kitchenai_python_sdk.DefaultApi(api_client)
     label = 'label_example' # str | 
-    query_schema = openapi_client.QuerySchema() # QuerySchema | 
+    query_schema = kitchenai_python_sdk.QuerySchema() # QuerySchema | 
 
     try:
         # Query Handler
@@ -159,21 +159,21 @@ Default
 
 
 ```python
-import openapi_client
-from openapi_client.rest import ApiException
+import kitchenai_python_sdk
+from kitchenai_python_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = kitchenai_python_sdk.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with kitchenai_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.DefaultApi(api_client)
+    api_instance = kitchenai_python_sdk.DefaultApi(api_client)
 
     try:
         # Default
@@ -220,24 +220,24 @@ Create a new embed from text
 
 
 ```python
-import openapi_client
-from openapi_client.models.embed_object_response import EmbedObjectResponse
-from openapi_client.models.embed_schema import EmbedSchema
-from openapi_client.rest import ApiException
+import kitchenai_python_sdk
+from kitchenai_python_sdk.models.embed_object_response import EmbedObjectResponse
+from kitchenai_python_sdk.models.embed_schema import EmbedSchema
+from kitchenai_python_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = kitchenai_python_sdk.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with kitchenai_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.DefaultApi(api_client)
-    embed_schema = openapi_client.EmbedSchema() # EmbedSchema | 
+    api_instance = kitchenai_python_sdk.DefaultApi(api_client)
+    embed_schema = kitchenai_python_sdk.EmbedSchema() # EmbedSchema | 
 
     try:
         # Embed Create
@@ -289,21 +289,21 @@ Delete an embed
 
 
 ```python
-import openapi_client
-from openapi_client.rest import ApiException
+import kitchenai_python_sdk
+from kitchenai_python_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = kitchenai_python_sdk.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with kitchenai_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.DefaultApi(api_client)
+    api_instance = kitchenai_python_sdk.DefaultApi(api_client)
     pk = 56 # int | 
 
     try:
@@ -354,22 +354,22 @@ Get an embed
 
 
 ```python
-import openapi_client
-from openapi_client.models.embed_object_response import EmbedObjectResponse
-from openapi_client.rest import ApiException
+import kitchenai_python_sdk
+from kitchenai_python_sdk.models.embed_object_response import EmbedObjectResponse
+from kitchenai_python_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = kitchenai_python_sdk.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with kitchenai_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.DefaultApi(api_client)
+    api_instance = kitchenai_python_sdk.DefaultApi(api_client)
     pk = 56 # int | 
 
     try:
@@ -422,22 +422,22 @@ Get all embeds
 
 
 ```python
-import openapi_client
-from openapi_client.models.embed_object_response import EmbedObjectResponse
-from openapi_client.rest import ApiException
+import kitchenai_python_sdk
+from kitchenai_python_sdk.models.embed_object_response import EmbedObjectResponse
+from kitchenai_python_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = kitchenai_python_sdk.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with kitchenai_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.DefaultApi(api_client)
+    api_instance = kitchenai_python_sdk.DefaultApi(api_client)
 
     try:
         # Embeds Get
@@ -486,21 +486,21 @@ delete a file
 
 
 ```python
-import openapi_client
-from openapi_client.rest import ApiException
+import kitchenai_python_sdk
+from kitchenai_python_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = kitchenai_python_sdk.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with kitchenai_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.DefaultApi(api_client)
+    api_instance = kitchenai_python_sdk.DefaultApi(api_client)
     pk = 56 # int | 
 
     try:
@@ -551,22 +551,22 @@ get a file
 
 
 ```python
-import openapi_client
-from openapi_client.models.file_object_response import FileObjectResponse
-from openapi_client.rest import ApiException
+import kitchenai_python_sdk
+from kitchenai_python_sdk.models.file_object_response import FileObjectResponse
+from kitchenai_python_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = kitchenai_python_sdk.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with kitchenai_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.DefaultApi(api_client)
+    api_instance = kitchenai_python_sdk.DefaultApi(api_client)
     pk = 56 # int | 
 
     try:
@@ -619,25 +619,25 @@ main entry for any file upload. Will upload via django storage and emit signals 
 
 
 ```python
-import openapi_client
-from openapi_client.models.file_object_response import FileObjectResponse
-from openapi_client.models.file_object_schema import FileObjectSchema
-from openapi_client.rest import ApiException
+import kitchenai_python_sdk
+from kitchenai_python_sdk.models.file_object_response import FileObjectResponse
+from kitchenai_python_sdk.models.file_object_schema import FileObjectSchema
+from kitchenai_python_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = kitchenai_python_sdk.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with kitchenai_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.DefaultApi(api_client)
+    api_instance = kitchenai_python_sdk.DefaultApi(api_client)
     file = None # bytearray | 
-    data = openapi_client.FileObjectSchema() # FileObjectSchema | 
+    data = kitchenai_python_sdk.FileObjectSchema() # FileObjectSchema | 
 
     try:
         # File Upload
@@ -690,22 +690,22 @@ get all files
 
 
 ```python
-import openapi_client
-from openapi_client.models.file_object_response import FileObjectResponse
-from openapi_client.rest import ApiException
+import kitchenai_python_sdk
+from kitchenai_python_sdk.models.file_object_response import FileObjectResponse
+from kitchenai_python_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = kitchenai_python_sdk.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with kitchenai_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.DefaultApi(api_client)
+    api_instance = kitchenai_python_sdk.DefaultApi(api_client)
 
     try:
         # Files Get
@@ -754,23 +754,23 @@ WIP and NOT SAFE TO USE
 
 
 ```python
-import openapi_client
-from openapi_client.models.upload_module_input import UploadModuleInput
-from openapi_client.rest import ApiException
+import kitchenai_python_sdk
+from kitchenai_python_sdk.models.upload_module_input import UploadModuleInput
+from kitchenai_python_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
+configuration = kitchenai_python_sdk.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
+with kitchenai_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.DefaultApi(api_client)
-    upload_module_input = openapi_client.UploadModuleInput() # UploadModuleInput | 
+    api_instance = kitchenai_python_sdk.DefaultApi(api_client)
+    upload_module_input = kitchenai_python_sdk.UploadModuleInput() # UploadModuleInput | 
 
     try:
         # Upload Notebook
