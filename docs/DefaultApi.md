@@ -4,8 +4,7 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**kitchenai_contrib_kitchenai_sdk_kitchenai_agent_handler**](DefaultApi.md#kitchenai_contrib_kitchenai_sdk_kitchenai_agent_handler) | **POST** /api/default/agent/{label} | Agent Handler
-[**kitchenai_contrib_kitchenai_sdk_kitchenai_query_handler**](DefaultApi.md#kitchenai_contrib_kitchenai_sdk_kitchenai_query_handler) | **POST** /api/default/query/{label} | Query Handler
+[**kitchenai_core_api_agent**](DefaultApi.md#kitchenai_core_api_agent) | **POST** /api/core/agent/{label} | Agent
 [**kitchenai_core_api_default**](DefaultApi.md#kitchenai_core_api_default) | **GET** /api/core/health | Default
 [**kitchenai_core_api_embed_create**](DefaultApi.md#kitchenai_core_api_embed_create) | **POST** /api/core/embed | Embed Create
 [**kitchenai_core_api_embed_delete**](DefaultApi.md#kitchenai_core_api_embed_delete) | **DELETE** /api/core/embed/{pk} | Embed Delete
@@ -15,19 +14,23 @@ Method | HTTP request | Description
 [**kitchenai_core_api_file_get**](DefaultApi.md#kitchenai_core_api_file_get) | **GET** /api/core/file/{pk} | File Get
 [**kitchenai_core_api_file_upload**](DefaultApi.md#kitchenai_core_api_file_upload) | **POST** /api/core/file | File Upload
 [**kitchenai_core_api_files_get**](DefaultApi.md#kitchenai_core_api_files_get) | **GET** /api/core/file | Files Get
-[**kitchenai_core_api_upload_notebook**](DefaultApi.md#kitchenai_core_api_upload_notebook) | **POST** /api/core/module/upload | Upload Notebook
+[**kitchenai_core_api_labels**](DefaultApi.md#kitchenai_core_api_labels) | **GET** /api/core/labels | Labels
+[**kitchenai_core_api_query**](DefaultApi.md#kitchenai_core_api_query) | **POST** /api/core/query/{label} | Query
 
 
-# **kitchenai_contrib_kitchenai_sdk_kitchenai_agent_handler**
-> kitchenai_contrib_kitchenai_sdk_kitchenai_agent_handler(label, query_schema)
+# **kitchenai_core_api_agent**
+> AgentResponseSchema kitchenai_core_api_agent(label, query_schema)
 
-Agent Handler
+Agent
+
+Create a new agent
 
 ### Example
 
 
 ```python
 import kitchenai_python_sdk
+from kitchenai_python_sdk.models.agent_response_schema import AgentResponseSchema
 from kitchenai_python_sdk.models.query_schema import QuerySchema
 from kitchenai_python_sdk.rest import ApiException
 from pprint import pprint
@@ -47,10 +50,12 @@ with kitchenai_python_sdk.ApiClient(configuration) as api_client:
     query_schema = kitchenai_python_sdk.QuerySchema() # QuerySchema | 
 
     try:
-        # Agent Handler
-        api_instance.kitchenai_contrib_kitchenai_sdk_kitchenai_agent_handler(label, query_schema)
+        # Agent
+        api_response = api_instance.kitchenai_core_api_agent(label, query_schema)
+        print("The response of DefaultApi->kitchenai_core_api_agent:\n")
+        pprint(api_response)
     except Exception as e:
-        print("Exception when calling DefaultApi->kitchenai_contrib_kitchenai_sdk_kitchenai_agent_handler: %s\n" % e)
+        print("Exception when calling DefaultApi->kitchenai_core_api_agent: %s\n" % e)
 ```
 
 
@@ -65,7 +70,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**AgentResponseSchema**](AgentResponseSchema.md)
 
 ### Authorization
 
@@ -74,73 +79,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **kitchenai_contrib_kitchenai_sdk_kitchenai_query_handler**
-> kitchenai_contrib_kitchenai_sdk_kitchenai_query_handler(label, query_schema)
-
-Query Handler
-
-### Example
-
-
-```python
-import kitchenai_python_sdk
-from kitchenai_python_sdk.models.query_schema import QuerySchema
-from kitchenai_python_sdk.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = kitchenai_python_sdk.Configuration(
-    host = "http://localhost"
-)
-
-
-# Enter a context with an instance of the API client
-with kitchenai_python_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = kitchenai_python_sdk.DefaultApi(api_client)
-    label = 'label_example' # str | 
-    query_schema = kitchenai_python_sdk.QuerySchema() # QuerySchema | 
-
-    try:
-        # Query Handler
-        api_instance.kitchenai_contrib_kitchenai_sdk_kitchenai_query_handler(label, query_schema)
-    except Exception as e:
-        print("Exception when calling DefaultApi->kitchenai_contrib_kitchenai_sdk_kitchenai_query_handler: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **label** | **str**|  | 
- **query_schema** | [**QuerySchema**](QuerySchema.md)|  | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 
@@ -743,19 +682,19 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **kitchenai_core_api_upload_notebook**
-> kitchenai_core_api_upload_notebook(upload_module_input)
+# **kitchenai_core_api_labels**
+> KitchenAIAppSchema kitchenai_core_api_labels()
 
-Upload Notebook
+Labels
 
-WIP and NOT SAFE TO USE
+Lists all the custom kitchenai labels
 
 ### Example
 
 
 ```python
 import kitchenai_python_sdk
-from kitchenai_python_sdk.models.upload_module_input import UploadModuleInput
+from kitchenai_python_sdk.models.kitchen_ai_app_schema import KitchenAIAppSchema
 from kitchenai_python_sdk.rest import ApiException
 from pprint import pprint
 
@@ -770,13 +709,81 @@ configuration = kitchenai_python_sdk.Configuration(
 with kitchenai_python_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = kitchenai_python_sdk.DefaultApi(api_client)
-    upload_module_input = kitchenai_python_sdk.UploadModuleInput() # UploadModuleInput | 
 
     try:
-        # Upload Notebook
-        api_instance.kitchenai_core_api_upload_notebook(upload_module_input)
+        # Labels
+        api_response = api_instance.kitchenai_core_api_labels()
+        print("The response of DefaultApi->kitchenai_core_api_labels:\n")
+        pprint(api_response)
     except Exception as e:
-        print("Exception when calling DefaultApi->kitchenai_core_api_upload_notebook: %s\n" % e)
+        print("Exception when calling DefaultApi->kitchenai_core_api_labels: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**KitchenAIAppSchema**](KitchenAIAppSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **kitchenai_core_api_query**
+> QueryResponseSchema kitchenai_core_api_query(label, query_schema)
+
+Query
+
+Create a new query
+
+### Example
+
+
+```python
+import kitchenai_python_sdk
+from kitchenai_python_sdk.models.query_response_schema import QueryResponseSchema
+from kitchenai_python_sdk.models.query_schema import QuerySchema
+from kitchenai_python_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = kitchenai_python_sdk.Configuration(
+    host = "http://localhost"
+)
+
+
+# Enter a context with an instance of the API client
+with kitchenai_python_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = kitchenai_python_sdk.DefaultApi(api_client)
+    label = 'label_example' # str | 
+    query_schema = kitchenai_python_sdk.QuerySchema() # QuerySchema | 
+
+    try:
+        # Query
+        api_response = api_instance.kitchenai_core_api_query(label, query_schema)
+        print("The response of DefaultApi->kitchenai_core_api_query:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->kitchenai_core_api_query: %s\n" % e)
 ```
 
 
@@ -786,11 +793,12 @@ with kitchenai_python_sdk.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **upload_module_input** | [**UploadModuleInput**](UploadModuleInput.md)|  | 
+ **label** | **str**|  | 
+ **query_schema** | [**QuerySchema**](QuerySchema.md)|  | 
 
 ### Return type
 
-void (empty response body)
+[**QueryResponseSchema**](QueryResponseSchema.md)
 
 ### Authorization
 
@@ -799,7 +807,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 

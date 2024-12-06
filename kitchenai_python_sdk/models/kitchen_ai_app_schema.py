@@ -18,17 +18,24 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
-class QuerySchema(BaseModel):
+class KitchenAIAppSchema(BaseModel):
     """
-    QuerySchema
+    KitchenAIAppSchema
     """ # noqa: E501
-    query: StrictStr
-    metadata: Optional[Dict[str, StrictStr]] = None
-    __properties: ClassVar[List[str]] = ["query", "metadata"]
+    namespace: StrictStr
+    query_handlers: List[StrictStr]
+    agent_handlers: List[StrictStr]
+    embed_tasks: List[StrictStr]
+    embed_delete_tasks: List[StrictStr]
+    storage_tasks: List[StrictStr]
+    storage_delete_tasks: List[StrictStr]
+    storage_create_hooks: List[StrictStr]
+    storage_delete_hooks: List[StrictStr]
+    __properties: ClassVar[List[str]] = ["namespace", "query_handlers", "agent_handlers", "embed_tasks", "embed_delete_tasks", "storage_tasks", "storage_delete_tasks", "storage_create_hooks", "storage_delete_hooks"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -48,7 +55,7 @@ class QuerySchema(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of QuerySchema from a JSON string"""
+        """Create an instance of KitchenAIAppSchema from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -69,16 +76,11 @@ class QuerySchema(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if metadata (nullable) is None
-        # and model_fields_set contains the field
-        if self.metadata is None and "metadata" in self.model_fields_set:
-            _dict['metadata'] = None
-
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of QuerySchema from a dict"""
+        """Create an instance of KitchenAIAppSchema from a dict"""
         if obj is None:
             return None
 
@@ -86,8 +88,15 @@ class QuerySchema(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "query": obj.get("query"),
-            "metadata": obj.get("metadata")
+            "namespace": obj.get("namespace"),
+            "query_handlers": obj.get("query_handlers"),
+            "agent_handlers": obj.get("agent_handlers"),
+            "embed_tasks": obj.get("embed_tasks"),
+            "embed_delete_tasks": obj.get("embed_delete_tasks"),
+            "storage_tasks": obj.get("storage_tasks"),
+            "storage_delete_tasks": obj.get("storage_delete_tasks"),
+            "storage_create_hooks": obj.get("storage_create_hooks"),
+            "storage_delete_hooks": obj.get("storage_delete_hooks")
         })
         return _obj
 

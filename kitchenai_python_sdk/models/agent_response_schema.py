@@ -18,17 +18,16 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
-class QuerySchema(BaseModel):
+class AgentResponseSchema(BaseModel):
     """
-    QuerySchema
+    AgentResponseSchema
     """ # noqa: E501
-    query: StrictStr
-    metadata: Optional[Dict[str, StrictStr]] = None
-    __properties: ClassVar[List[str]] = ["query", "metadata"]
+    response: StrictStr
+    __properties: ClassVar[List[str]] = ["response"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -48,7 +47,7 @@ class QuerySchema(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of QuerySchema from a JSON string"""
+        """Create an instance of AgentResponseSchema from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -69,16 +68,11 @@ class QuerySchema(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if metadata (nullable) is None
-        # and model_fields_set contains the field
-        if self.metadata is None and "metadata" in self.model_fields_set:
-            _dict['metadata'] = None
-
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of QuerySchema from a dict"""
+        """Create an instance of AgentResponseSchema from a dict"""
         if obj is None:
             return None
 
@@ -86,8 +80,7 @@ class QuerySchema(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "query": obj.get("query"),
-            "metadata": obj.get("metadata")
+            "response": obj.get("response")
         })
         return _obj
 
