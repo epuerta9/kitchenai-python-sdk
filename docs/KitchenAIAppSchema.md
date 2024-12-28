@@ -8,12 +8,8 @@ Name | Type | Description | Notes
 **namespace** | **str** |  | 
 **query_handlers** | **List[str]** |  | 
 **agent_handlers** | **List[str]** |  | 
-**embed_tasks** | **List[str]** |  | 
-**embed_delete_tasks** | **List[str]** |  | 
-**storage_tasks** | **List[str]** |  | 
-**storage_delete_tasks** | **List[str]** |  | 
-**storage_create_hooks** | **List[str]** |  | 
-**storage_delete_hooks** | **List[str]** |  | 
+**embed_handlers** | **List[str]** |  | 
+**storage_handlers** | **List[str]** |  | 
 
 ## Example
 

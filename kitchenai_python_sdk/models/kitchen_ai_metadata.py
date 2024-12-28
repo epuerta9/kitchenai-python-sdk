@@ -17,21 +17,18 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class FileObjectResponse(BaseModel):
+class KitchenAIMetadata(BaseModel):
     """
-    FileObjectResponse
+    KitchenAIMetadata
     """ # noqa: E501
-    id: StrictInt
-    name: StrictStr
-    ingest_label: StrictStr
-    metadata: Dict[str, StrictStr]
-    status: StrictStr
-    __properties: ClassVar[List[str]] = ["id", "name", "ingest_label", "metadata", "status"]
+    stream_id: Optional[StrictStr] = None
+    stream: StrictBool
+    __properties: ClassVar[List[str]] = ["stream_id", "stream"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -51,7 +48,7 @@ class FileObjectResponse(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of FileObjectResponse from a JSON string"""
+        """Create an instance of KitchenAIMetadata from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -72,11 +69,16 @@ class FileObjectResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if stream_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.stream_id is None and "stream_id" in self.model_fields_set:
+            _dict['stream_id'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of FileObjectResponse from a dict"""
+        """Create an instance of KitchenAIMetadata from a dict"""
         if obj is None:
             return None
 
@@ -84,11 +86,8 @@ class FileObjectResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "name": obj.get("name"),
-            "ingest_label": obj.get("ingest_label"),
-            "metadata": obj.get("metadata"),
-            "status": obj.get("status")
+            "stream_id": obj.get("stream_id"),
+            "stream": obj.get("stream")
         })
         return _obj
 

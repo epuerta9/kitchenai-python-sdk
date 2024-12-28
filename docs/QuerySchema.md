@@ -6,6 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **query** | **str** |  | 
+**stream** | **bool** |  | [optional] [default to False]
+**stream_id** | **str** |  | [optional] 
 **metadata** | **Dict[str, str]** |  | [optional] 
 
 ## Example

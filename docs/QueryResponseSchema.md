@@ -5,7 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**response** | **str** |  | 
+**input** | **str** |  | [optional] 
+**output** | **str** |  | [optional] 
+**retrieval_context** | **List[str]** |  | [optional] 
+**stream_gen** | [**AnyOf**](AnyOf.md) |  | [optional] 
+**metadata** | **Dict[str, str]** |  | [optional] 
+**kitchenai_metadata** | [**KitchenAIMetadata**](KitchenAIMetadata.md) |  | [optional] 
 
 ## Example
 
