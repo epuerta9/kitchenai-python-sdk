@@ -7,7 +7,7 @@ name = "kitchenai-py"
 dynamic = ["version"]
 description = ''
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.11"
 license = "MIT"
 keywords = []
 authors = [
@@ -25,7 +25,9 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: PyPy",
 ]
 dependencies = [
-  "kitchenai-python-sdk"
+  "kitchenai-python-sdk",
+  "sseclient",
+  "requests"
 ]
 
 [project.urls]
@@ -39,7 +41,15 @@ path = "src/kitchenai_py/__about__.py"
 [tool.hatch.envs.types]
 extra-dependencies = [
   "mypy>=1.0.0",
+  "pytest>=7.0.0"
 ]
+
+[tool.hatch.envs.dev]
+dependencies = [
+  "pytest",
+  ]
+lock-filename = "requirements-dev.txt"
+
 [tool.hatch.envs.types.scripts]
 check = "mypy --install-types --non-interactive {args:src/kitchenai_py tests}"
 
